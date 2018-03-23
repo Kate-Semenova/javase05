@@ -69,9 +69,9 @@ public class App {
         for (fileNumber = in.nextInt(); filesTXT.length < fileNumber; fileNumber = in.nextInt()) {
             System.out.println("Print the number correctly");
         }
-        if(directoryChooser.deleteFile(filesTXT[fileNumber - 1])){
+        if (directoryChooser.deleteFile(filesTXT[fileNumber - 1])) {
             System.out.println("File is deleted");
-        }else {
+        } else {
             System.out.println("File is not deleted");
         }
 

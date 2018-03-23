@@ -11,7 +11,7 @@ public class DirectoryChooser {
     private File directory;
     private File[] filesArray;
 
-    public DirectoryChooser(String path)  {
+    public DirectoryChooser(String path) {
         if (new File(path).isDirectory()) {
             directory = new File(path);
             filesArray = directory.listFiles();
@@ -22,12 +22,12 @@ public class DirectoryChooser {
         return filesArray;
     }
 
-    public File[] getFilesArray(String format)  {
+    public File[] getFilesArray(String format) {
         return directory.listFiles(file -> file.getPath().endsWith(format));
     }
 
     public boolean createNewFile(String filename) {
-        File file = new File(directory.getPath() + "\\" + filename +  ".txt");
+        File file = new File(directory.getPath() + "\\" + filename + ".txt");
         try {
             if (file.createNewFile()) {
                 System.out.println(String.format("Файл %s создан", filename + ".txt"));

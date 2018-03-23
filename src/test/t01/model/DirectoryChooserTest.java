@@ -26,32 +26,34 @@ public class DirectoryChooserTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         name = "newFile";
         path = "src\\file";
         directoryChooser = new DirectoryChooser(path);
-        fileStr = path +"\\"+ name + ".txt";
+        fileStr = path + "\\" + name + ".txt";
         file = new File(fileStr);
     }
+
     @Test
-    public void createNewFileShouldReturnBoolean(){
+    public void createNewFileShouldReturnBoolean() {
         String name = "newFile";
         String path = "src\\file";
         DirectoryChooser directoryChooser = new DirectoryChooser(path);
-        String fileStr = path +"\\"+ name + ".txt";
+        String fileStr = path + "\\" + name + ".txt";
         File file = new File(fileStr);
-        if(file.exists()){
+        if (file.exists()) {
             assertFalse(directoryChooser.createNewFile(name));
-        } else{
+        } else {
             assertTrue(directoryChooser.createNewFile(name));
         }
     }
-    @Test
-    public void deleteFileShouldReturnBoolean(){
 
-        if(file.exists()){
+    @Test
+    public void deleteFileShouldReturnBoolean() {
+
+        if (file.exists()) {
             assertTrue(directoryChooser.deleteFile(file));
-        } else{
+        } else {
             assertFalse(directoryChooser.deleteFile(file));
         }
     }
