@@ -219,13 +219,14 @@ public class TextViewer extends JFrame {
             System.out.println(txtChanger[0].getFile().getAbsolutePath());
             File newFile = txtChanger[0].getFile();
 
+//DOES NOT WORK I TRIED EVERYTHING I KNEW:
             if (newFile.delete()) {
                 defaultListModel.clear();
                 Arrays.stream(directoryChooser[0].getFilesArray("txt"))
                         .forEach(file -> defaultListModel.addElement(file.getAbsolutePath()));
                 textArea.setText("");
             } else {
-                System.out.println("fuck");
+                System.out.println("Can`t delete");
             }
         });
     }
