@@ -10,7 +10,8 @@ import java.io.*;
 public class TxtChanger {
     private File file;
     private StringBuilder stringBuilder = new StringBuilder();
-    private final String TXT = "txt";
+    private final String TXT = ".txt";
+
 
     public TxtChanger(File file) {
 
