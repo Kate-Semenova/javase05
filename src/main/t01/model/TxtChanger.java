@@ -1,6 +1,6 @@
 package main.t01.model;
 
-import main.t01.exception.CantWriteException;
+import main.t01.exception.CanNotWriteException;
 
 import java.io.*;
 
@@ -38,14 +38,14 @@ public class TxtChanger {
         return stringBuilder.toString();
     }
 
-    public boolean addLine(String line) throws CantWriteException {
+    public boolean addLine(String line) throws CanNotWriteException {
         if (file != null) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
                 stringBuilder.append(line).append("\n");
                 bufferedWriter.write(stringBuilder.toString());
                 return true;
             } catch (IOException e) {
-                throw new CantWriteException(file.getName());
+                throw new CanNotWriteException(file.getName());
             }
         }
         return false;

@@ -1,7 +1,7 @@
 package main.t01;
 
 
-import main.t01.exception.CantWriteException;
+import main.t01.exception.CanNotWriteException;
 import main.t01.exception.FileIsNotCreatedException;
 import main.t01.model.DirectoryChooser;
 import main.t01.model.TxtChanger;
@@ -45,7 +45,7 @@ public class App {
         String string = in2.nextLine();
         try {
             txtChanger.addLine(string);
-        } catch (CantWriteException e) {
+        } catch (CanNotWriteException e) {
             e.printStackTrace();
         }
         System.out.println("============Let`s see what is in the file===============");
