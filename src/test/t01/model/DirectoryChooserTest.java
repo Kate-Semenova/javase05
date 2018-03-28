@@ -1,5 +1,6 @@
 package test.t01.model;
 
+import main.t01.exception.FileIsNotCreatedException;
 import main.t01.model.DirectoryChooser;
 import org.junit.Before;
 import org.junit.Rule;
@@ -42,9 +43,17 @@ public class DirectoryChooserTest {
         String fileStr = path + "\\" + name + ".txt";
         File file = new File(fileStr);
         if (file.exists()) {
-            assertFalse(directoryChooser.createNewFile(name));
+            try {
+                assertFalse(directoryChooser.createNewFile(name));
+            } catch (FileIsNotCreatedException e) {
+                e.printStackTrace();
+            }
         } else {
-            assertTrue(directoryChooser.createNewFile(name));
+            try {
+                assertTrue(directoryChooser.createNewFile(name));
+            } catch (FileIsNotCreatedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

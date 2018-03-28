@@ -1,6 +1,8 @@
 package main.t01;
 
 
+import main.t01.exception.CantWriteException;
+import main.t01.exception.FileIsNotCreatedException;
 import main.t01.model.DirectoryChooser;
 import main.t01.model.TxtChanger;
 
@@ -41,7 +43,11 @@ public class App {
         System.out.println("==========Add some text=============");
         Scanner in2 = new Scanner(System.in);
         String string = in2.nextLine();
-        txtChanger.addLine(string);
+        try {
+            txtChanger.addLine(string);
+        } catch (CantWriteException e) {
+            e.printStackTrace();
+        }
         System.out.println("============Let`s see what is in the file===============");
         System.out.println(txtChanger.getText());
 
@@ -51,8 +57,12 @@ public class App {
         do {
             String str = in.nextLine();
             System.out.println("Trying to create file " + str);
-            if (directoryChooser.createNewFile(str)) {
-                result = "successful";
+            try {
+                if (directoryChooser.createNewFile(str)) {
+                    result = "successful";
+                }
+            } catch (FileIsNotCreatedException e) {
+                e.printStackTrace();
             }
             System.out.println(result);
         }

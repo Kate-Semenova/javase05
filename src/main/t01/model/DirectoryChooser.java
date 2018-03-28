@@ -1,5 +1,7 @@
 package main.t01.model;
 
+import main.t01.exception.FileIsNotCreatedException;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
@@ -26,7 +28,7 @@ public class DirectoryChooser {
         return directory.listFiles(file -> file.getPath().endsWith(format));
     }
 
-    public boolean createNewFile(String filename) {
+    public boolean createNewFile(String filename) throws FileIsNotCreatedException {
         File file = new File(directory.getPath() + "\\" + filename + ".txt");
         try {
             if (file.createNewFile()) {
@@ -36,7 +38,7 @@ public class DirectoryChooser {
             return false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            return false;
+            throw new FileIsNotCreatedException(filename);
         } finally {
             filesArray = directory.listFiles();
         }
