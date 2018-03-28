@@ -22,7 +22,7 @@ public class TxtChanger {
                 bufferedReader.lines().forEach(line -> stringBuilder.append(line).append("\n"));
 
             } catch (FileNotFoundException e) {
-                file = null;
+                this.file = null;
                 e.printStackTrace();
             }
 
